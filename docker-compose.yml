@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: AutouApi
+    ports:
+      - "8000:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - AI_MODEL=${AI_MODEL:-gemini-2.0-flash-exp}
+      - DEBUG=${DEBUG:-True}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-*}
+      - MAX_FILE_SIZE_MB=${MAX_FILE_SIZE_MB:-10}
+    volumes:
+      - ./app:/app/app
+      - ./logs:/app/logs
+    restart: unless-stopped
