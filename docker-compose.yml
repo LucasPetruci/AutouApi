@@ -8,10 +8,10 @@ services:
       - "8000:8000"
     environment:
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
-      - AI_MODEL=${AI_MODEL:-gemini-2.0-flash-exp}
-      - DEBUG=${DEBUG:-True}
-      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-*}
-      - MAX_FILE_SIZE_MB=${MAX_FILE_SIZE_MB:-10}
+      - AI_MODEL=${AI_MODEL}
+      - DEBUG=${DEBUG}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS}
+      - MAX_FILE_SIZE_MB=${MAX_FILE_SIZE_MB}
     volumes:
       - ./app:/app/app
       - ./logs:/app/logs
