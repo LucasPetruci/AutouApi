@@ -1,7 +1,7 @@
 import os
 from typing import BinaryIO
 from dotenv import load_dotenv
-import PyPDF2
+from pypdf import PdfReader
 from app.exceptions.file_exceptions import (
     InvalidFileTypeException,
     FileTooLargeException,
@@ -57,7 +57,7 @@ class FileProcessorService:
     
     def _extract_from_pdf(self, file: BinaryIO) -> str:
         try:
-            pdf_reader = PyPDF2.PdfReader(file)
+            pdf_reader = PdfReader(file)
             
             text_parts = []
             for page in pdf_reader.pages:
