@@ -14,7 +14,7 @@ class GeminiService:
         
         genai.configure(api_key=api_key)
         
-        model_name = os.getenv("AI_MODEL", "gemini-2.0-flash-exp")
+        model_name = os.getenv("AI_MODEL", "gemini-2.5-flash")
         self.model = genai.GenerativeModel(model_name)
         
         self.generation_config = {
@@ -23,9 +23,17 @@ class GeminiService:
             "top_k": 40,
             "max_output_tokens": 1024,
         }
+        
+        self.language_map = {
+            "pt-BR": "Portuguese (Brazil)",
+            "en-US": "English (United States)",
+            "es-ES": "Spanish (Spain)",
+            "fr-FR": "French (France)",
+            "de-DE": "German (Germany)"
+        }
     
-    def classify_email(self, content: str) -> dict:
-        prompt = self._build_prompt(content)
+    def classify_email(self, content: str, language: str = "pt-BR") -> dict:
+        prompt = self._build_prompt(content, language)
         
         try:
             response = self.model.generate_content(
@@ -41,7 +49,9 @@ class GeminiService:
         except Exception as e:
             raise AIProcessingException(f"Error processing with Gemini: {str(e)}")
     
-    def _build_prompt(self, content: str) -> str:
+    def _build_prompt(self, content: str, language: str) -> str:
+        lang_name = self.language_map.get(language, "Portuguese (Brazil)")
+        
         return f"""You are an assistant specialized in classifying corporate emails from the financial sector.
 
 Analyze the email below and classify it into one of the following categories:
@@ -59,18 +69,18 @@ Analyze the email below and classify it into one of the following categories:
 - Chains or spam
 - Personal messages unrelated to work
 
-After classifying, generate an appropriate, professional and polite automatic response in Portuguese.
+After classifying, generate an appropriate, professional and polite automatic response in **{lang_name}**.
 
 **Email to analyze:**
 {content}
 
-**IMPORTANT**: Respond ONLY with a valid JSON object, no additional text. Use this exact format:
+**IMPORTANT**: Respond ONLY with a valid JSON object. The "reasoning" field should be in English, but the "suggested_response" MUST be in {lang_name}. Use this exact format:
 
 {{
     "category": "Productive" or "Unproductive",
     "confidence": number between 0 and 1,
-    "suggested_response": "automatic response text",
-    "reasoning": "brief explanation of the classification"
+    "suggested_response": "automatic response text in {lang_name}",
+    "reasoning": "brief explanation in English"
 }}"""
     
     def _parse_response(self, response: str) -> dict:
