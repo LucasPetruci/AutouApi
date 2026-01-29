@@ -1,5 +1,6 @@
 import os
 import json
+import re
 from dotenv import load_dotenv
 import google.generativeai as genai
 from app.exceptions.ai_exceptions import AIProcessingException, AIConfigurationException
@@ -21,7 +22,7 @@ class GeminiService:
             "temperature": 0.3,
             "top_p": 0.8,
             "top_k": 40,
-            "max_output_tokens": 1024,
+            "max_output_tokens": 2048,
         }
         
         self.language_map = {
@@ -74,14 +75,16 @@ After classifying, generate an appropriate, professional and polite automatic re
 **Email to analyze:**
 {content}
 
-**IMPORTANT**: Respond ONLY with a valid JSON object. The "reasoning" field should be in English, but the "suggested_response" MUST be in {lang_name}. Use this exact format:
+**CRITICAL**: Respond ONLY with a valid JSON object. Escape all special characters properly. The "reasoning" field should be in English, but the "suggested_response" MUST be in {lang_name}. Use this EXACT format:
 
 {{
-    "category": "Productive" or "Unproductive",
-    "confidence": number between 0 and 1,
-    "suggested_response": "automatic response text in {lang_name}",
-    "reasoning": "brief explanation in English"
-}}"""
+    "category": "Productive",
+    "confidence": 0.95,
+    "suggested_response": "Response text here without line breaks",
+    "reasoning": "Brief explanation"
+}}
+
+IMPORTANT: Keep the suggested_response in a single line without \\n characters."""
     
     def _parse_response(self, response: str) -> dict:
         try:
@@ -97,7 +100,21 @@ After classifying, generate an appropriate, professional and polite automatic re
             
             response = response.strip()
             
-            data = json.loads(response)
+            # Tentar extrair JSON usando regex se falhar
+            json_match = re.search(r'\{[^}]+\}', response, re.DOTALL)
+            if json_match:
+                response = json_match.group(0)
+            
+            # Tentar limpar quebras de linha problemáticas
+            response = response.replace('\n', ' ').replace('\r', ' ')
+            
+            # Parse múltiplas tentativas
+            try:
+                data = json.loads(response)
+            except json.JSONDecodeError:
+                # Tentar com JSONDecoder mais permissivo
+                import ast
+                data = ast.literal_eval(response)
             
             category = data.get("category", "Productive")
             confidence = float(data.get("confidence", 0.8))
@@ -120,7 +137,7 @@ After classifying, generate an appropriate, professional and polite automatic re
                 "reasoning": reasoning
             }
             
-        except json.JSONDecodeError as e:
-            raise AIProcessingException(f"Error parsing JSON: {str(e)}")
+        except (json.JSONDecodeError, SyntaxError, ValueError) as e:
+            raise AIProcessingException(f"Error parsing JSON: {str(e)}\nRaw response: {response[:200]}")
         except Exception as e:
             raise AIProcessingException(f"Error processing response: {str(e)}")
