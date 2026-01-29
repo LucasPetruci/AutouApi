@@ -1,0 +1,366 @@
+type: collection.insomnia.rest/5.0
+name: AutoU
+meta:
+  id: wrk_a4d5834e74674ec6b5d7b44ee79522a9
+  created: 1769538798406
+  modified: 1769538798406
+  description: ""
+collection:
+  - name: API
+    meta:
+      id: fld_d614326252fb470d9c9085a9574740a6
+      created: 1769641691316
+      modified: 1769641717164
+      sortKey: -1769641691466
+      description: ""
+    children:
+      - name: Classify
+        meta:
+          id: fld_bee8d52adc2b4c8daf13b1ed034feb54
+          created: 1769642991966
+          modified: 1769643020303
+          sortKey: -1769642991966
+          description: ""
+        children:
+          - name: Text
+            meta:
+              id: fld_b4cbefd97efb416eaab6effa6c92f5a9
+              created: 1769648198129
+              modified: 1769648198129
+              sortKey: -1769648198129
+              description: ""
+            children:
+              - url: "{{ _.url }}/api/classify/text"
+                name: Classify Text - Productive (PT-BR)
+                meta:
+                  id: req_980841c0d69c4184a89d585e4aed911b
+                  created: 1769641730791
+                  modified: 1769648221056
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648216606
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: >-
+                    {
+                      "content": "Prezados, gostaria de solicitar o status da minha requisição #12345 que está em aberto desde a semana passada.",
+                      "language": "pt-BR"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{ _.url }}/api/classify/text"
+                name: Classify Text - Productive (EN-US)
+                meta:
+                  id: req_3f57caa129ae43938ce360a98d6161e8
+                  created: 1769643064446
+                  modified: 1769648216563
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648216506
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: >-
+                    {
+                      "content": "Dear support team, I urgently need a status update for request #12345 which has been open since last week. The system is showing errors when processing payments.",
+                      "language": "en-US"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{ _.url }}/api/classify/text"
+                name: Classify Text - Productive (ES-ES)
+                meta:
+                  id: req_fa422152417344cd967272c3e4d6f665
+                  created: 1769648250050
+                  modified: 1769700531449
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648216656
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: >-
+                    {
+                      "content": "Estimados, necesito urgentemente una actualización del estado de la solicitud #12345 que está abierta desde la semana pasada. El sistema está mostrando errores al procesar pagos.",
+                      "language": "es-ES"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: https://autouapi-jqlo.onrender.com/api/classify/text
+                name: PROD - Classify Text - Productive (ES-ES)
+                meta:
+                  id: req_c3ddf44a82924fe59532f49bb0e161c1
+                  created: 1769700497496
+                  modified: 1769701455877
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648216631
+                method: POST
+                body:
+                  mimeType: application/json
+                  text: >-
+                    {
+                      "content": "Estimados, necesito urgentemente una actualización del estado de la solicitud #12345 que está abierta desde la semana pasada. El sistema está mostrando errores al procesar pagos.",
+                      "language": "es-ES"
+                    }
+                headers:
+                  - name: Content-Type
+                    value: application/json
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+          - name: File
+            meta:
+              id: fld_e984a2d8c23d46c8b51e79de1dc66368
+              created: 1769648235420
+              modified: 1769701428024
+              sortKey: -1769648235420
+              description: ""
+            children:
+              - url: "{{ _.prod_url }}/api/classify/file"
+                name: PROD- Classify file- Productive (PT-BR)
+                meta:
+                  id: req_ba678a38c8e347c4b52b65c67d130217
+                  created: 1769643121782
+                  modified: 1769701485627
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648261463
+                method: POST
+                body:
+                  mimeType: multipart/form-data
+                  params:
+                    - id: pair_9fa961f7a19c4d36b8a7244b85bdfe03
+                      name: file
+                      value: ""
+                      description: ""
+                      disabled: false
+                      type: file
+                      fileName: /home/lucas/Downloads/email_produtivo_pt.txt
+                    - id: pair_ec75da86877042b199c8e0cb4347edcc
+                      name: language
+                      value: pt-BR
+                      description: ""
+                      disabled: false
+                headers:
+                  - name: Content-Type
+                    value: multipart/form-data
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{ _.url }}/api/classify/file"
+                name: Classify file- Productive (EN-US)
+                meta:
+                  id: req_07530f9777e04d298f82522cc20082cd
+                  created: 1769648912282
+                  modified: 1769648915895
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648239059.5
+                method: POST
+                body:
+                  mimeType: multipart/form-data
+                  params:
+                    - id: pair_9fa961f7a19c4d36b8a7244b85bdfe03
+                      name: file
+                      value: ""
+                      description: ""
+                      disabled: false
+                      type: file
+                      fileName: /home/lucas/Downloads/email_produtivo_pt.txt
+                    - id: pair_ec75da86877042b199c8e0cb4347edcc
+                      name: language
+                      value: pt-BR
+                      description: ""
+                      disabled: false
+                headers:
+                  - name: Content-Type
+                    value: multipart/form-data
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{ _.url }}/api/classify/file"
+                name: Classify file- Productive (ES-ES)
+                meta:
+                  id: req_a8c15c788d2f4dcd8a52bc63b3d5447c
+                  created: 1769648928144
+                  modified: 1769648928144
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648227857.75
+                method: POST
+                body:
+                  mimeType: multipart/form-data
+                  params:
+                    - id: pair_9fa961f7a19c4d36b8a7244b85bdfe03
+                      name: file
+                      value: ""
+                      description: ""
+                      disabled: false
+                      type: file
+                      fileName: /home/lucas/Downloads/email_produtivo_pt.txt
+                    - id: pair_ec75da86877042b199c8e0cb4347edcc
+                      name: language
+                      value: pt-BR
+                      description: ""
+                      disabled: false
+                headers:
+                  - name: Content-Type
+                    value: multipart/form-data
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{ _.url }}/api/classify/file"
+                name: Classify file- Unproductive (PT-BR)
+                meta:
+                  id: req_838dd731cbd44c5cb35a922f35c52bf4
+                  created: 1769649019149
+                  modified: 1769649030729
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648250261.25
+                method: POST
+                body:
+                  mimeType: multipart/form-data
+                  params:
+                    - id: pair_9fa961f7a19c4d36b8a7244b85bdfe03
+                      name: file
+                      value: ""
+                      description: ""
+                      disabled: false
+                      type: file
+                      fileName: /home/lucas/Downloads/email_improdutivo_pt.txt
+                    - id: pair_ec75da86877042b199c8e0cb4347edcc
+                      name: language
+                      value: pt-BR
+                      description: ""
+                      disabled: false
+                headers:
+                  - name: Content-Type
+                    value: multipart/form-data
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+              - url: "{{ _.url }}/api/classify/file"
+                name: Classify file- Productive (PT-BR)
+                meta:
+                  id: req_43873daee0ed47a0ad5433f261e9e0cb
+                  created: 1769701449814
+                  modified: 1769701449814
+                  isPrivate: false
+                  description: ""
+                  sortKey: -1769648255862.125
+                method: POST
+                body:
+                  mimeType: multipart/form-data
+                  params:
+                    - id: pair_9fa961f7a19c4d36b8a7244b85bdfe03
+                      name: file
+                      value: ""
+                      description: ""
+                      disabled: false
+                      type: file
+                      fileName: /home/lucas/Downloads/email_produtivo_pt.txt
+                    - id: pair_ec75da86877042b199c8e0cb4347edcc
+                      name: language
+                      value: pt-BR
+                      description: ""
+                      disabled: false
+                headers:
+                  - name: Content-Type
+                    value: multipart/form-data
+                  - name: User-Agent
+                    value: insomnia/12.0.0
+                settings:
+                  renderRequestBody: true
+                  encodeUrl: true
+                  followRedirects: global
+                  cookies:
+                    send: true
+                    store: true
+                  rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_1ea9ae634bb9f18a7966d03c8bb0285fc415c360
+    created: 1769538798410
+    modified: 1769538798410
+environments:
+  name: Base Environment
+  meta:
+    id: env_1ea9ae634bb9f18a7966d03c8bb0285fc415c360
+    created: 1769538798408
+    modified: 1769701467694
+    isPrivate: false
+  data:
+    url: http://localhost:8000
+    prod_url: https://autouapi-jqlo.onrender.com
