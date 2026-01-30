@@ -75,13 +75,13 @@ After classifying, generate an appropriate, professional and polite automatic re
 **Email to analyze:**
 {content}
 
-**CRITICAL**: Respond ONLY with a valid JSON object. Escape all special characters properly. The "reasoning" field should be in English, but the "suggested_response" MUST be in {lang_name}. Use this EXACT format:
+**CRITICAL**: Respond ONLY with a valid JSON object. Escape all special characters properly. Both the "reasoning" and "suggested_response" fields MUST be in **{lang_name}**. Use this EXACT format:
 
 {{
     "category": "Productive",
     "confidence": 0.95,
     "suggested_response": "Response text here without line breaks",
-    "reasoning": "Brief explanation"
+    "reasoning": "Brief explanation in {lang_name}"
 }}
 
 IMPORTANT: Keep the suggested_response in a single line without \\n characters."""
