@@ -61,12 +61,18 @@ Analyze the email below and classify it into one of the following categories:
 - Questions about systems or processes
 - Document or information requests
 - Complaints or problems to be solved
+- Urgent requests that need immediate attention
 
-**UNPRODUCTIVE**: Emails that don't require immediate action, such as:
-- Greeting messages (birthdays, holidays, Christmas, etc.)
-- Generic thanks
+**UNPRODUCTIVE**: Emails that don't require immediate action or specific response, such as:
+- Greeting messages (birthdays, holidays, Christmas, New Year, etc.)
+- Generic thanks and appreciation messages
+- Holiday wishes and congratulations
 - Chains or spam
 - Personal messages unrelated to work
+- Messages that only express gratitude without requesting anything
+- Messages that only send wishes (Happy New Year, Merry Christmas, etc.)
+
+IMPORTANT: If the email is ONLY a greeting, thank you message, or holiday wishes WITHOUT any request for action, information, or problem resolution, it MUST be classified as UNPRODUCTIVE.
 
 After classifying, generate an appropriate, professional and polite automatic response in **{lang_name}**.
 
