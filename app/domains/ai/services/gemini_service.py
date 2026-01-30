@@ -100,19 +100,15 @@ IMPORTANT: Keep the suggested_response in a single line without \\n characters."
             
             response = response.strip()
             
-            # Tentar extrair JSON usando regex se falhar
             json_match = re.search(r'\{[^}]+\}', response, re.DOTALL)
             if json_match:
                 response = json_match.group(0)
             
-            # Tentar limpar quebras de linha problemáticas
             response = response.replace('\n', ' ').replace('\r', ' ')
             
-            # Parse múltiplas tentativas
             try:
                 data = json.loads(response)
             except json.JSONDecodeError:
-                # Tentar com JSONDecoder mais permissivo
                 import ast
                 data = ast.literal_eval(response)
             
