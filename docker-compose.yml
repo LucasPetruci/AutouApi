@@ -6,6 +6,8 @@ services:
     container_name: AutouApi
     ports:
       - "8000:8000"
+    env_file:
+      - ./.env
     environment:
       - GOOGLE_API_KEY=${GOOGLE_API_KEY}
       - AI_MODEL=${AI_MODEL}
@@ -23,6 +25,8 @@ services:
     container_name: AutouWeb
     ports:
       - "3000:3000"
+    env_file:
+      - ../web/.env
     environment:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
       - NODE_ENV=${NODE_ENV}
