@@ -28,9 +28,7 @@ class GeminiService:
         self.language_map = {
             "pt-BR": "Portuguese (Brazil)",
             "en-US": "English (United States)",
-            "es-ES": "Spanish (Spain)",
-            "fr-FR": "French (France)",
-            "de-DE": "German (Germany)"
+            "es-ES": "Spanish (Spain)"
         }
     
     def classify_email(self, content: str, language: str = "pt-BR") -> dict:
