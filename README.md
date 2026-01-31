@@ -97,5 +97,6 @@ AutouApi/
 ## Links
 
 - [Interface Web](https://github.com/LucasPetruci/AutouWeb)
+- [Video no Youtube](https://www.youtube.com/watch?v=QvN-87UT67U)
 - [FastAPI Docs](https://fastapi.tiangolo.com/)
 - [Google Gemini API](https://ai.google.dev/)
