@@ -20,18 +20,18 @@ services:
     restart: unless-stopped
   web:
     build:
-      context: ../web
+      context: ../AutouWeb
       dockerfile: Dockerfile
     container_name: AutouWeb
     ports:
       - "3000:3000"
     env_file:
-      - ../web/.env
+      - ../AutouWeb/.env
     environment:
       - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
       - NODE_ENV=${NODE_ENV}
     volumes:
-      - ../web:/app
+      - ../AutouWeb:/app
       - /app/node_modules
       - /app/.next
     depends_on:
