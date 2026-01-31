@@ -59,6 +59,33 @@ A API ficará em `http://localhost:8000` e a interface web em `http://localhost:
 
 Importe o arquivo `AutouApiDocs.yaml` no Insomnia para testar os endpoints da API.
 
+## Estrutura do Projeto
+
+```
+AutouApi/
+├── app/
+│   ├── domains/              # Domínios da aplicação
+│   │   ├── ai/               # Domínio de IA
+│   │   │   ├── controllers/  # Controladores
+│   │   │   ├── schemas/      # Schemas Pydantic
+│   │   │   └── services/     # Serviços de negócio
+│   │   ├── classifier/       # Domínio de classificação
+│   │   │   ├── controllers/
+│   │   │   ├── schemas/
+│   │   │   └── services/
+│   │   └── file/             # Domínio de arquivos
+│   │       ├── controllers/
+│   │       ├── schemas/
+│   │       └── services/
+│   ├── exceptions/            # Exceções customizadas
+│   ├── routes/                # Rotas da API
+│   └── main.py               # Aplicação FastAPI
+├── AutouApiDocs.yaml         # Documentação OpenAPI
+├── docker-compose.yml        # Configuração Docker Compose
+├── Dockerfile                # Imagem Docker
+└── requirements.txt         # Dependências Python
+```
+
 ## Tecnologias
 
 - FastAPI
